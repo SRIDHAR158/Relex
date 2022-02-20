@@ -1,0 +1,32 @@
+table {
+    width: 100%;
+  }
+
+.input{
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 50%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 18px;
+}  
+
+.hfy{
+
+    margin-left: 400px;
+
+}
+
+/* @media screen and (max-width: 768px) {
+  header nav {
+    display: none;
+  }
+}
+@media screen and (orientation: landscape) {
+  header nav {
+    position: fixed;
+    left: 0;
+    width: 20vw;
+  }
+} */

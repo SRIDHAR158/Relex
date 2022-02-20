@@ -1,0 +1,170 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<mat-card>
+
+    <!-- <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head> -->
+
+    <mat-card-title>Create Employee Form!</mat-card-title>
+
+    <mat-card-content style="padding-top: 20px;">
+
+        <form [formGroup]="addUserForm" (submit)="createEmployee()">
+
+            <div class="example-container">
+                <mat-form-field appearance="outline">
+                    <mat-label>Employee Name:</mat-label>
+                    <input matInput placeholder="John" formControlName="name">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    <mat-error
+                        *ngIf="addUserForm.controls['name'].errors && addUserForm.controls['name'].hasError('required')">
+                        Employee Name is required
+                    </mat-error>
+                    <mat-error
+                        *ngIf="addUserForm.controls['name'].errors && addUserForm.controls['name'].hasError('minlength')">
+                        Employee Name should have minimum of 4 characters
+                    </mat-error>
+                </mat-form-field>
+
+            </div>
+
+            <p> </p>
+
+            <div class="example-container">
+                <mat-form-field appearance="outline">
+                    <mat-label>Phone Number:</mat-label>
+                    <input matInput placeholder="123456789" formControlName="phone">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    <mat-error
+                        *ngIf="addUserForm.controls['phone'].errors && addUserForm.controls['phone'].hasError('required')">
+                        Phone number is required
+                    </mat-error>
+                    <mat-error
+                        *ngIf="addUserForm.controls['phone'].errors && addUserForm.controls['phone'].hasError('maxlength')">
+                        Phone number can have maximum of 20 digits
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <p> </p>
+
+            <div class="example-container">
+                <mat-form-field appearance="outline">
+                    <mat-label>Email Id:</mat-label>
+                    <input matInput placeholder="example@sample.com" formControlName="email">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    <mat-error
+                        *ngIf="addUserForm.controls['email'].errors && addUserForm.controls['email'].hasError('required')">
+                        Email Address is required
+                    </mat-error>
+                    <mat-error
+                        *ngIf="addUserForm.controls['email'].errors && addUserForm.controls['email'].hasError('email')">
+                        Email Address is not valid
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <p> </p>
+
+            <div class="example-container">
+                <mat-label>Gender:</mat-label><br><br>
+
+                <label>
+                    <input type="radio" value="Male" formControlName="gender">
+                    <span> Male</span>
+                </label><br>
+                <label>
+                    <input type="radio" value="Female" formControlName="gender">
+                    <span> Female</span>
+                </label><br>
+                <label>
+                    <input type="radio" value="Others" formControlName="gender">
+                    <span> Others</span>
+                </label>
+
+            </div>
+
+            <p> </p>
+
+            <div class="example-container">
+                <mat-label>Qualification:</mat-label><br><br>
+
+                <select class="form-select" formControlName="qualification">
+                    <option selected>Choose your qualification</option>
+                    <option *ngFor="let e of education">{{ e }}</option>
+                </select>
+            </div>
+
+            <br> <br>
+
+            <div class="example-container">
+                <mat-form-field appearance="outline">
+                    <mat-label>Date of Birth</mat-label>
+                    <input type="date" matInput formControlName="dob">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                    <mat-error
+                        *ngIf="addUserForm.controls['dob'].errors && addUserForm.controls['dob'].hasError('required')">
+                        Date of Birth is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <p> </p>
+
+            <div class="example-container">
+                <mat-form-field>
+                    <mat-label>Work Experience</mat-label>
+                    <mat-select placeholder="Choose your work experience" formControlName="experience"
+                        (selectionChange)="onSelectionChanged($event)">
+                        <mat-option *ngFor="let w of workexperience" [value]="w.value">
+                            {{w.value}}
+                        </mat-option>
+                    </mat-select>
+                    <mat-error
+                        *ngIf="addUserForm.controls['experience'].errors && addUserForm.controls['experience'].hasError('required')">
+                        Work Experience is required
+                    </mat-error>
+                </mat-form-field>
+
+                <br><br>
+
+                <mat-form-field>
+                    <input type="number" matInput placeholder="How many years of experience?" formControlName="years">
+                    <mat-error
+                        *ngIf="addUserForm.controls['years'].errors && addUserForm.controls['years'].hasError('required')">
+                        Years of Experience is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <p> </p>
+
+            <div class="example-container">
+                <mat-label>Upload Profile Picture:</mat-label><br><br>
+                <input type="file">
+                <button mat-raised-button color="primary" [disabled]="true">Add Picture</button>
+            </div>
+
+            <p> </p>
+
+            <div class="example-container">
+                <p>
+                    <mat-checkbox formControlName="terms">I agree to terms and conditions.</mat-checkbox>
+                </p>
+            </div>
+
+            <p> </p>
+
+            <p>
+                <button mat-raised-button color="primary" [disabled]="!addUserForm.valid">Submit</button>
+            </p>
+        </form>
+    </mat-card-content>
+</mat-card>
+
+</html>
